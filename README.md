@@ -1,0 +1,1 @@
+A model that recognizes human speech and uses google audio recognition to convert to text. Text can be converted to json and fed into chatbots. This is still at infant stage.
