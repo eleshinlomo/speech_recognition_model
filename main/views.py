@@ -10,7 +10,7 @@ def index(request):
     return HttpResponse(test)
 
 
-def text_Speech():
+def speech_to_text():
     try:
         recognizer = speech_recognition.Recognizer()
 
@@ -19,17 +19,14 @@ def text_Speech():
                 audio = recognizer.listen(mic)
                 text = recognizer.recognize_google(audio)
                 text = text.lower()
-        print(f"recognized {text}")
         return text
     except speech_recognition.UnknownValueError:
         recognizer = speech_recognition.Recognizer()
 
-def get_text_to_speech_response():
+def get_speech_to_text_response():
     try:
-        response = text_Speech()
-        return JsonResponse({"message": response})
+        response = speech_to_text()
+        return response
     except Exception as e:
-        return JsonResponse({"message": str(e)})
-
-get_text_to_speech_response()
+        return {"message": str(e)}
         
